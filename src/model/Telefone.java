@@ -12,12 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Unknown
  */
 @Entity
+@Table(name = "telefone")
 public class Telefone implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,7 +30,7 @@ public class Telefone implements Serializable {
     private String numero;
     @ManyToOne
     @JoinColumn(name = "funid" , nullable = false)
-    private Funcionario funcinario;
+    private Funcionario funcionario;
     @ManyToOne
     @JoinColumn(name = "cliid" , nullable = false)
     private Cliente cliente;

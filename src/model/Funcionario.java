@@ -15,27 +15,28 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author Unknown
  */
 @Entity
+@Table(name = "funcionario")
 public class Funcionario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(name = "funid") 
+    @Column(name = "funid") 
     private Long id;
     @Column(name ="funnome")
     private String nome;
-    @Column(name = "funtelefone")
     @OneToMany(mappedBy = "funcionario")
-    private List<Telefone> telefone;
+    private List<Telefone> telefones;
     @ManyToOne
-    @JoinColumn(name = "id" , nullable = false)
-    private Funcionario funcionario;
+    @JoinColumn(name = "cliid" , nullable = false)
+    private Cliente cliente;
 
     public Long getId() {
         return id;
@@ -52,6 +53,7 @@ public class Funcionario implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
     
     @Override
     public int hashCode() {
