@@ -6,10 +6,13 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -21,11 +24,14 @@ public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cliid")
     private Long id;
     private String razaosocial;
     private String Funcionario;
-    private Funcionario funcionario;
-    private Telefone telefone;
+    @OneToMany(mappedBy = "cliente")
+    private List<Funcionario> funcionarios;
+    @OneToMany(mappedBy = "cliente")
+    private List<Telefone> telefones;
     
     public Long getId() {
         return id;
@@ -51,22 +57,21 @@ public class Cliente implements Serializable {
         this.Funcionario = Funcionario;
     }
 
-    public Funcionario getFuncionario() {
-        return funcionario;
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
     }
 
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
     }
 
-    public Telefone getTelefone() {
-        return telefone;
+    public List<Telefone> getTelefones() {
+        return telefones;
     }
 
-    public void setTelefone(Telefone telefone) {
-        this.telefone = telefone;
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
     }
-    
     
     @Override
     public int hashCode() {

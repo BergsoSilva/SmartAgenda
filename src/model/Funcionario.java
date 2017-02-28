@@ -6,11 +6,15 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,11 +26,16 @@ public class Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @Column(name = "funid") 
     private Long id;
     @Column(name ="funnome")
     private String nome;
     @Column(name = "funtelefone")
-    private Telefone telefone;
+    @OneToMany(mappedBy = "funcionario")
+    private List<Telefone> telefone;
+    @ManyToOne
+    @JoinColumn(name = "id" , nullable = false)
+    private Funcionario funcionario;
 
     public Long getId() {
         return id;
@@ -43,16 +52,6 @@ public class Funcionario implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public Telefone getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(Telefone telefone) {
-        this.telefone = telefone;
-    }
-
-  
     
     @Override
     public int hashCode() {

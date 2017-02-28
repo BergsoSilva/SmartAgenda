@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,6 +24,14 @@ public class Telefone implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String descricao;
+    private String numero;
+    @ManyToOne
+    @JoinColumn(name = "funid" , nullable = false)
+    private Funcionario funcinario;
+    @ManyToOne
+    @JoinColumn(name = "cliid" , nullable = false)
+    private Cliente cliente;
 
     public Long getId() {
         return id;
@@ -31,6 +41,22 @@ public class Telefone implements Serializable {
         this.id = id;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
