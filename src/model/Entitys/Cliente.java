@@ -7,6 +7,7 @@ package model.Entitys;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,9 +30,9 @@ public class Cliente implements Serializable {
     @Column(name = "cliid")
     private Long id;
     private String razaosocial;
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente",cascade = CascadeType.REMOVE)
     private List<Funcionario> funcionarios;
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente",cascade = CascadeType.REMOVE)
     private List<Telefone> telefones;
 
     public Long getId() {

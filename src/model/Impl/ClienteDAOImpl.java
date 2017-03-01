@@ -6,6 +6,7 @@
 package model.Impl;
 
 import DataAcessObjectInterface.DAOImpl;
+import javax.persistence.EntityManager;
 import model.Entitys.Cliente;
 import model.dao.ClienteDAO;
 
@@ -14,5 +15,7 @@ import model.dao.ClienteDAO;
  * @author Unknown
  */
 public class ClienteDAOImpl extends DAOImpl<Cliente, Integer> implements ClienteDAO{
+    
+
     
 }

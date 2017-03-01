@@ -17,9 +17,11 @@ import util.ConnectionFactory;
  */
 public abstract class DAOImpl<T,I extends Serializable> implements GenericDAOInterface<T, I>{
     
-  private   EntityManager entymanager= ConnectionFactory.getEntityManagerFactory();
+  private   EntityManager entymanager=null;
 
     public DAOImpl() {
+        
+        getEntitymanager();
     }
   
   
@@ -36,7 +38,7 @@ public abstract class DAOImpl<T,I extends Serializable> implements GenericDAOInt
     @Override
     public void remove(T entity) {
         entymanager.getTransaction().begin();
-        entymanager.remove(entity);
+        entymanager.remove(entymanager.contains(entity) ? entity : entymanager.merge(entity));
         entymanager.getTransaction().commit();
         
     }

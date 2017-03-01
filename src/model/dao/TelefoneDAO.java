@@ -6,7 +6,6 @@
 package model.dao;
 
 import DataAcessObjectInterface.GenericDAOInterface;
-import java.io.Serializable;
 import model.Entitys.Telefone;
 
 /**

@@ -6,6 +6,7 @@
 package model.Impl;
 
 import DataAcessObjectInterface.DAOImpl;
+import javax.persistence.EntityManager;
 import model.Entitys.Funcionario;
 import model.dao.FuncionarioDAO;
 
@@ -14,5 +15,6 @@ import model.dao.FuncionarioDAO;
  * @author Unknown
  */
 public class FuncionarioDAOImpl extends DAOImpl<Funcionario, Integer> implements FuncionarioDAO{
+   
     
 }
