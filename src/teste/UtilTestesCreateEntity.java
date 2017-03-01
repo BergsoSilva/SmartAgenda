@@ -5,17 +5,17 @@
  */
 package teste;
 
-import util.ConnectioinFactory;
 import javax.persistence.EntityManager;
+import util.ConnectionFactory;
 
 /**
  *
  * @author unkwow
  */
 public class UtilTestesCreateEntity {
-    
+
     public static void main(String[] args) {
-        EntityManager manager = ConnectioinFactory.getEntityManagerFactory();
+        EntityManager manager = ConnectionFactory.getEntityManagerFactory();
     }
-    
+
 }

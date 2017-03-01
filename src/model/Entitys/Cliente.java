@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package model.Entitys;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -19,21 +20,19 @@ import javax.persistence.Table;
  * @author Unknown
  */
 @Entity
-@Table(name = "telefone")
-public class Telefone implements Serializable {
+@Table(name = "cliente")
+public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cliid")
     private Long id;
-    private String descricao;
-    private String numero;
-    @ManyToOne
-    @JoinColumn(name = "funid" , nullable = false)
-    private Funcionario funcionario;
-    @ManyToOne
-    @JoinColumn(name = "cliid" , nullable = false)
-    private Cliente cliente;
+    private String razaosocial;
+    @OneToMany(mappedBy = "cliente")
+    private List<Funcionario> funcionarios;
+    @OneToMany(mappedBy = "cliente")
+    private List<Telefone> telefones;
 
     public Long getId() {
         return id;
@@ -43,22 +42,30 @@ public class Telefone implements Serializable {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getRazaosocial() {
+        return razaosocial;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setRazaosocial(String razaosocial) {
+        this.razaosocial = razaosocial;
     }
 
-    public String getNumero() {
-        return numero;
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
     }
-    
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -69,10 +76,10 @@ public class Telefone implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Telefone)) {
+        if (!(object instanceof Cliente)) {
             return false;
         }
-        Telefone other = (Telefone) object;
+        Cliente other = (Cliente) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -81,7 +88,7 @@ public class Telefone implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Telefone[ id=" + id + " ]";
+        return "model.Cliente[ id=" + id + " ]";
     }
-    
+
 }

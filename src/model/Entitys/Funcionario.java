@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package model.Entitys;
 
 import java.io.Serializable;
 import java.util.List;
@@ -28,14 +28,14 @@ public class Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "funid") 
+    @Column(name = "funid")
     private Long id;
-    @Column(name ="funnome")
+    @Column(name = "funnome")
     private String nome;
     @OneToMany(mappedBy = "funcionario")
     private List<Telefone> telefones;
     @ManyToOne
-    @JoinColumn(name = "cliid" , nullable = false)
+    @JoinColumn(name = "cliid", nullable = false)
     private Cliente cliente;
 
     public Long getId() {
@@ -53,8 +53,7 @@ public class Funcionario implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -79,5 +78,5 @@ public class Funcionario implements Serializable {
     public String toString() {
         return "model.Funcionario[ id=" + id + " ]";
     }
-    
+
 }
