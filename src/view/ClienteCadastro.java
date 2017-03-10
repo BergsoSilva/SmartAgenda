@@ -13,19 +13,45 @@ public class ClienteCadastro extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
+    
+    private Cliente pesgarDado() {
+            Cliente cliente = new Cliente();
+            cliente.setRazaosocial(campoRazaoSocial.getText());
+            
+            return cliente;
+    }
+    
+    public void liparCampos (){
+        campoRazaoSocial.setText("");
+        
+    }
+    
+    public void salvarDados(){
+        
+    }
+    
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         painelDados = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         campoRazaoSocial = new javax.swing.JTextField();
         painelButoes = new javax.swing.JPanel();
-        btnSalavar = new javax.swing.JButton();
+        btnSalavar1 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
+
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Razao Social");
 
         javax.swing.GroupLayout painelDadosLayout = new javax.swing.GroupLayout(painelDados);
@@ -37,7 +63,7 @@ public class ClienteCadastro extends javax.swing.JFrame {
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(campoRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         painelDadosLayout.setVerticalGroup(
             painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -46,13 +72,20 @@ public class ClienteCadastro extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
-        btnSalavar.setText("Salvar");
-        btnSalavar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSalavar1.setText("Salvar");
+        btnSalavar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnSalavarMouseReleased(evt);
+                btnSalavar1MouseReleased(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseReleased(evt);
             }
         });
 
@@ -61,21 +94,28 @@ public class ClienteCadastro extends javax.swing.JFrame {
         painelButoesLayout.setHorizontalGroup(
             painelButoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelButoesLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(btnSalavar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(btnSalavar1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancelar)
+                .addGap(23, 23, 23))
         );
         painelButoesLayout.setVerticalGroup(
             painelButoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnSalavar, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+            .addGroup(painelButoesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelButoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalavar1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(painelButoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(painelDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,20 +132,13 @@ public class ClienteCadastro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalavarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalavarMouseReleased
-        ClienteDAO dao = new ClienteController();
-        String razaoSocial = campoRazaoSocial.getText();
-        
-        Cliente c = new Cliente();
-        c.setRazaosocial(razaoSocial);
-        try{
-            dao.save(c);
-           
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        
-    }//GEN-LAST:event_btnSalavarMouseReleased
+    private void btnSalavar1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalavar1MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalavar1MouseReleased
+
+    private void btnCancelarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseReleased
+      dispose();
+    }//GEN-LAST:event_btnCancelarMouseReleased
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -141,9 +174,12 @@ public class ClienteCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSalavar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnSalavar1;
     private javax.swing.JTextField campoRazaoSocial;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel painelButoes;
     private javax.swing.JPanel painelDados;
