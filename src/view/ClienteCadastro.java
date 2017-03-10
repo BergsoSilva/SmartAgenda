@@ -1,10 +1,13 @@
 package view;
 
 import controller.ClienteController;
+import javax.swing.JOptionPane;
 import model.Entitys.Cliente;
 import model.dao.ClienteDAO;
+import util.BDMensagensPadrao;
 
 public class ClienteCadastro extends javax.swing.JFrame {
+    private Cliente cliente;
 
     public ClienteCadastro() {
         initComponents();
@@ -14,11 +17,10 @@ public class ClienteCadastro extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     
-    private Cliente pesgarDado() {
-            Cliente cliente = new Cliente();
-            cliente.setRazaosocial(campoRazaoSocial.getText());
-            
-            return cliente;
+    private void pegarDado() {
+            this.cliente = new Cliente();
+            this.cliente.setRazaosocial(campoRazaoSocial.getText());
+         
     }
     
     public void liparCampos (){
@@ -27,6 +29,15 @@ public class ClienteCadastro extends javax.swing.JFrame {
     }
     
     public void salvarDados(){
+        ClienteDAO dao = new ClienteController();
+        try{
+            pegarDado();
+            dao.save(cliente);
+            JOptionPane.showMessageDialog(this,cliente.getRazaosocial()+BDMensagensPadrao.CADASTRADO_COM_SUCESSO);
+            liparCampos();
+        }catch(Exception e){
+            e.printStackTrace();
+        } 
         
     }
     
@@ -133,7 +144,7 @@ public class ClienteCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalavar1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalavar1MouseReleased
-        // TODO add your handling code here:
+        salvarDados();
     }//GEN-LAST:event_btnSalavar1MouseReleased
 
     private void btnCancelarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseReleased
