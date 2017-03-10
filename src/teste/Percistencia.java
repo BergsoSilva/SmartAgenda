@@ -9,10 +9,10 @@ import java.util.List;
 import model.Entitys.Cliente;
 import model.Entitys.Funcionario;
 import model.Entitys.Telefone;
-import model.Impl.ClienteDAOImpl;
-import model.Impl.FuncionarioDAOImpl;
+import controller.ClienteController;
+import controller.FuncionarioController;
 import model.dao.TelefoneDAO;
-import model.Impl.TelefoneDAOImpl;
+import controller.TefoneController;
 import model.dao.ClienteDAO;
 import model.dao.FuncionarioDAO;
 
@@ -22,14 +22,7 @@ import model.dao.FuncionarioDAO;
  */
 public class Percistencia {
     public static void main(String[] args) {
-        
-           TelefoneDAO t = new TelefoneDAOImpl();
-           
-           Telefone fone = new Telefone();
-           fone.setId(Long.parseLong("1"));
-           
-           t.remove(fone);
-           
+         
           
     }
 }

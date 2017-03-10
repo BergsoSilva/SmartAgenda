@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.Impl;
+package controller;
 
 import DataAcessObjectInterface.DAOImpl;
 import javax.persistence.EntityManager;
@@ -14,7 +14,7 @@ import model.dao.ClienteDAO;
  *
  * @author Unknown
  */
-public class ClienteDAOImpl extends DAOImpl<Cliente, Integer> implements ClienteDAO{
+public class ClienteController extends DAOImpl<Cliente, Integer> implements ClienteDAO{
     
 
     

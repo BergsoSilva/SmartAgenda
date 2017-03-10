@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.Impl;
+package controller;
 
 import DataAcessObjectInterface.DAOImpl;
 import javax.persistence.EntityManager;
-import model.Entitys.Funcionario;
-import model.dao.FuncionarioDAO;
+import model.Entitys.Telefone;
+import model.dao.TelefoneDAO;
 
 /**
  *
  * @author Unknown
  */
-public class FuncionarioDAOImpl extends DAOImpl<Funcionario, Integer> implements FuncionarioDAO{
-   
+public class TefoneController extends DAOImpl<Telefone, Integer> implements TelefoneDAO{
+    
     
 }
