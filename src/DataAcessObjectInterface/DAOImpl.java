@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import util.ConnectionFactory;
 
 /**
@@ -55,7 +56,10 @@ public abstract class DAOImpl<T,I extends Serializable> implements GenericDAOInt
     @SuppressWarnings("unchecked")
     @Override
     public List<T> getAll(Class<T> classe) {
-        return entymanager.createQuery("select o from "+ classe.getSimpleName()+" o ").getResultList();
+      
+        Query query = entymanager.createQuery("select o from  "+classe.getName()+" o ");
+       
+        return query.getResultList();
         
     }
 

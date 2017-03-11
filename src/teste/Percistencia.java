@@ -5,16 +5,9 @@
  */
 package teste;
 
-import java.util.List;
 import model.Entitys.Cliente;
-import model.Entitys.Funcionario;
-import model.Entitys.Telefone;
 import controller.ClienteController;
-import controller.FuncionarioController;
-import model.dao.TelefoneDAO;
-import controller.TefoneController;
 import model.dao.ClienteDAO;
-import model.dao.FuncionarioDAO;
 
 /**
  *
@@ -22,7 +15,10 @@ import model.dao.FuncionarioDAO;
  */
 public class Percistencia {
     public static void main(String[] args) {
-         
-          
+         ClienteDAO dao = new ClienteController();
+         Cliente cliente = new Cliente();        
+          for (Cliente c : dao.getAll(Cliente.class)) {
+              System.out.println("---"+c.getRazaosocial());
+        }
     }
 }
