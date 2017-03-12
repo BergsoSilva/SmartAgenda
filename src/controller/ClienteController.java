@@ -6,7 +6,6 @@
 package controller;
 
 import DataAcessObjectInterface.DAOImpl;
-import javax.persistence.EntityManager;
 import model.Entitys.Cliente;
 import model.dao.ClienteDAO;
 

@@ -62,7 +62,12 @@ public abstract class DAOImpl<T,I extends Serializable> implements GenericDAOInt
         return query.getResultList();
         
     }
-
+     
+    @Override
+    public T edit(T entity){
+        
+    }
+    
     @Override
     public EntityManager getEntitymanager() {
         if(entymanager==null){

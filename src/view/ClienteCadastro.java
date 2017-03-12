@@ -8,13 +8,21 @@ import util.BDMensagensPadrao;
 
 public class ClienteCadastro extends javax.swing.JFrame {
     private Cliente cliente;
+    private String opcaoTela;
 
+   
     public ClienteCadastro() {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(this);
+        this.opcaoTela="Cadastro";
+    }
+    public ClienteCadastro(Cliente  cliente){
+        this.opcaoTela="Alterar";
+        prepararCampos(cliente);
     }
 
+   
     @SuppressWarnings("unchecked")
     
     private void pegarDado() {
@@ -27,8 +35,16 @@ public class ClienteCadastro extends javax.swing.JFrame {
         campoRazaoSocial.setText("");
         
     }
+   private void prepararCampos(Cliente c){
+       campoRazaoSocial.setText(c.getRazaosocial());
+   }
     
-    public void salvarDados(){
+   private void preparaNomes(){
+        setTitle(opcaoTela + "Clientes");
+        btnSalavar1.setText(opcaoTela);
+    }
+    
+    public void cadastrar(){
         ClienteDAO dao = new ClienteController();
         try{
             pegarDado();
@@ -39,6 +55,16 @@ public class ClienteCadastro extends javax.swing.JFrame {
             e.printStackTrace();
         } 
         
+    }
+    public void editar(){
+        pegarDado();
+        ClienteDAO dao = new ClienteController();
+        try{
+           // dao.
+        }catch(Exception  ex ){
+            ex.printStackTrace();
+        }
+            
     }
     
     
@@ -86,10 +112,14 @@ public class ClienteCadastro extends javax.swing.JFrame {
                 .addContainerGap(245, Short.MAX_VALUE))
         );
 
-        btnSalavar1.setText("Salvar");
         btnSalavar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnSalavar1MouseReleased(evt);
+            }
+        });
+        btnSalavar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalavar1ActionPerformed(evt);
             }
         });
 
@@ -144,45 +174,20 @@ public class ClienteCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalavar1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalavar1MouseReleased
-        salvarDados();
+        if (opcaoTela.endsWith("Cadastrar"))
+            cadastrar();
+            
     }//GEN-LAST:event_btnSalavar1MouseReleased
 
     private void btnCancelarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseReleased
       dispose();
     }//GEN-LAST:event_btnCancelarMouseReleased
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClienteCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClienteCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClienteCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClienteCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void btnSalavar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalavar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalavar1ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ClienteCadastro().setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
