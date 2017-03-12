@@ -1,9 +1,13 @@
 package view;
 
 import controller.ClienteController;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JMenuItem;
 import model.Entitys.Cliente;
 import model.dao.ClienteDAO;
 
@@ -17,10 +21,12 @@ public class ClientePesquisa extends javax.swing.JFrame {
     public ClientePesquisa() {
         initComponents();
         prencherTabela();
+        carregarMenuFlutuante();
         setLocationRelativeTo(this);
        
     }
-     private void pesquisar(){        
+    
+    private void pesquisar(){        
         pegarPesquisa();
         try {            
             ClienteDAO dao = new ClienteController();
@@ -31,7 +37,7 @@ public class ClientePesquisa extends javax.swing.JFrame {
         
     }
      
-       private void prencherTabela(){
+    private void prencherTabela(){
          pesquisar();
          tabelaClientes.setModel(new TabelaModeloCliente(clientes));
      }
@@ -40,10 +46,68 @@ public class ClientePesquisa extends javax.swing.JFrame {
         this.cliente.setRazaosocial(camoPesquisa.getText());
     }
     
+    private void carregarMenuFlutuante(){
+        JMenuItem menuItem[] = {new JMenuItem("Ver detalhes"), new JMenuItem("Alterar")};
+        
+        menuItem[0].addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               verDetalhes();
+            }
+        });
+        
+        menuItem[1].addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    alterar();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        
+        for (JMenuItem menuItem1 : menuItem) {
+            popupOperacoes.add(menuItem1);
+        }
+    }
+    
+    private void verDetalhes(){
+        ClienteDetahes detalhes= new ClienteDetahes(this.cliente);
+        detalhes.setVisible(true);
+    }
+    private void alterar(){
+        //ClienteDetahes detalhes= new ClienteDetahes();
+        //detalhes.setVisi voidle(true);
+    }
+    
+    private void selecionarLinha( MouseEvent evt){
+        int linha= tabelaClientes.rowAtPoint(evt.getPoint());
+        if(linha> 1){
+            tabelaClientes.setRowSelectionInterval(linha, linha);
+            linha= tabelaClientes.getSelectedRow();
+            this.cliente= clientes.get(linha);
+        }
+    }
+    private void realizarAcao(MouseEvent evt){
+        if (evt.getButton() == evt.BUTTON1){
+            
+            if(evt.getClickCount() > 1){
+                verDetalhes();
+            }
+        }else{
+            if(evt.getButton() == evt.BUTTON3){
+                popupOperacoes.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popupOperacoes = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -55,6 +119,13 @@ public class ClientePesquisa extends javax.swing.JFrame {
         botaoNovo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
@@ -68,6 +139,11 @@ public class ClientePesquisa extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaClientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaClientes);
 
         camoPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -93,6 +169,11 @@ public class ClientePesquisa extends javax.swing.JFrame {
         });
 
         botaoNovo.setText("Novo");
+        botaoNovo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                botaoNovoMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelButoesLayout = new javax.swing.GroupLayout(painelButoes);
         painelButoes.setLayout(painelButoesLayout);
@@ -171,7 +252,7 @@ public class ClientePesquisa extends javax.swing.JFrame {
     }//GEN-LAST:event_botaSairMouseReleased
 
     private void camoPesquisaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_camoPesquisaKeyTyped
-       
+       //ssss
     }//GEN-LAST:event_camoPesquisaKeyTyped
 
     private void camoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_camoPesquisaKeyReleased
@@ -183,6 +264,20 @@ public class ClientePesquisa extends javax.swing.JFrame {
            prencherTabela();
        }
     }//GEN-LAST:event_camoPesquisaKeyPressed
+
+    private void botaoNovoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoNovoMouseReleased
+        ClienteCadastro cadasro = new ClienteCadastro();
+        cadasro.setVisible(true);
+    }//GEN-LAST:event_botaoNovoMouseReleased
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+       prencherTabela();
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void tabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClientesMouseClicked
+        selecionarLinha(evt);
+        realizarAcao(evt);
+    }//GEN-LAST:event_tabelaClientesMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -225,6 +320,7 @@ public class ClientePesquisa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel painelButoes;
+    private javax.swing.JPopupMenu popupOperacoes;
     private javax.swing.JTable tabelaClientes;
     // End of variables declaration//GEN-END:variables
 }
