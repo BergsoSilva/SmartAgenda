@@ -1,6 +1,10 @@
 package view;
 
+import controller.ClienteController;
+import javax.swing.JOptionPane;
 import model.Entitys.Cliente;
+import model.dao.ClienteDAO;
+import util.BDMensagensPadrao;
 
 public class ClienteDetahes extends javax.swing.JFrame {
     private Cliente cliente;
@@ -74,7 +78,7 @@ public class ClienteDetahes extends javax.swing.JFrame {
 
         painelButoes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAlterar.setText("Salvar");
+        btnAlterar.setText("Editar");
         btnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnAlterarMouseReleased(evt);
@@ -90,10 +94,15 @@ public class ClienteDetahes extends javax.swing.JFrame {
         });
         painelButoes.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 11, -1, 54));
 
-        btnExcluir.setText("Salvar");
+        btnExcluir.setText("Excluir");
         btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnExcluirMouseReleased(evt);
+            }
+        });
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
             }
         });
         painelButoes.add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 79, 54));
@@ -131,6 +140,29 @@ public class ClienteDetahes extends javax.swing.JFrame {
     private void btnExcluirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirMouseReleased
+
+    public boolean excluir (){
+        ClienteDAO dao = new ClienteController();
+        try{
+            dao.remove(cliente);
+            return true;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+       int mensagem = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir " +
+                       cliente.getRazaosocial()+ "?", null, JOptionPane.YES_NO_OPTION);
+        if(mensagem == JOptionPane.YES_OPTION){
+            if (excluir())
+                JOptionPane.showMessageDialog(null,BDMensagensPadrao.EXCLUIDO_COM_SUCESSO);
+            else
+              new Exception(BDMensagensPadrao.INSTRUCAO_ERRO);
+        }else {
+            JOptionPane.showConfirmDialog(null,"Operação cencelada");
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;

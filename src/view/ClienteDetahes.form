@@ -111,7 +111,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btnAlterar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Salvar"/>
+                <Property name="text" type="java.lang.String" value="Editar"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAlterarMouseReleased"/>
@@ -137,10 +137,11 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnExcluir">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Salvar"/>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnExcluirMouseReleased"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

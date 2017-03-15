@@ -65,7 +65,8 @@ public abstract class DAOImpl<T,I extends Serializable> implements GenericDAOInt
      
     @Override
     public T edit(T entity){
-        
+        entymanager.merge(entity);
+        return entity;
     }
     
     @Override

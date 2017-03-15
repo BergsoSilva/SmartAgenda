@@ -15,7 +15,9 @@ public class ClienteCadastro extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(this);
-        this.opcaoTela="Cadastro";
+        this.opcaoTela="Cadastrar";
+        btnSalavar1.setText(opcaoTela);
+        this.opcaoTela="Cadastrar";
     }
     public ClienteCadastro(Cliente  cliente){
         this.opcaoTela="Alterar";

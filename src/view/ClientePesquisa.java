@@ -85,8 +85,8 @@ public class ClientePesquisa extends javax.swing.JFrame {
     
     private void selecionarLinha( MouseEvent evt){
         int linha= tabelaClientes.rowAtPoint(evt.getPoint());
-        if(linha> 1){
-            tabelaClientes.setRowSelectionInterval(linha, linha);
+        if(linha > -1){
+            tabelaClientes.setRowSelectionInterval(linha,linha);
             linha= tabelaClientes.getSelectedRow();
             this.cliente= clientes.get(linha);
         }

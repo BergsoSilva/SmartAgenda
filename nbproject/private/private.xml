@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/pc/.ssh/SmartAgenda/src/util/BDMensagensPadrao.java</file>
-            <file>file:/C:/Users/pc/.ssh/SmartAgenda/src/model/Entitys/Cliente.java</file>
-            <file>file:/C:/Users/pc/.ssh/SmartAgenda/src/view/ClientePesquisa.java</file>
-            <file>file:/C:/Users/pc/.ssh/SmartAgenda/src/view/ClienteCadastro.java</file>
-            <file>file:/C:/Users/pc/.ssh/SmartAgenda/src/util/BDException.java</file>
+            <file>file:/C:/Users/Unknown/Documents/ProjetoAgenda/SmartAgenda/SmartAgenda/src/DataAcessObjectInterface/GenericDAOInterface.java</file>
+            <file>file:/C:/Users/Unknown/Documents/ProjetoAgenda/SmartAgenda/SmartAgenda/src/DataAcessObjectInterface/DAOImpl.java</file>
+            <file>file:/C:/Users/Unknown/Documents/ProjetoAgenda/SmartAgenda/SmartAgenda/src/view/ClienteCadastro.java</file>
+            <file>file:/C:/Users/Unknown/Documents/ProjetoAgenda/SmartAgenda/SmartAgenda/src/controller/ClienteController.java</file>
         </group>
     </open-files>
 </project-private>
