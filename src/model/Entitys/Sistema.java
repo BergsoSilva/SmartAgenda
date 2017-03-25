@@ -7,33 +7,27 @@ package model.Entitys;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.ManyToMany;
 
 /**
  *
  * @author Unknown
  */
 @Entity
-@Table(name = "cliente")
-public class Cliente implements Serializable {
+public class Sistema implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cliid")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String razaosocial;
-    @OneToMany(mappedBy = "cliente",cascade = CascadeType.REMOVE)
-    private List<Funcionario> funcionarios;
-    @OneToMany(mappedBy = "cliente",cascade = CascadeType.REMOVE)
-    private List<Telefone> telefones;
+    private String nome;
+    private String situacao;
+    @ManyToMany
+    private List<Empresa> empresa;
 
     public Long getId() {
         return id;
@@ -43,30 +37,32 @@ public class Cliente implements Serializable {
         this.id = id;
     }
 
-    public String getRazaosocial() {
-        return razaosocial;
+    public String getNome() {
+        return nome;
     }
 
-    public void setRazaosocial(String razaosocial) {
-        this.razaosocial = razaosocial;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public List<Funcionario> getFuncionarios() {
-        return funcionarios;
+    public String getSituacao() {
+        return situacao;
     }
 
-    public void setFuncionarios(List<Funcionario> funcionarios) {
-        this.funcionarios = funcionarios;
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 
-    public List<Telefone> getTelefones() {
-        return telefones;
+    public List<Empresa> getEmpresa() {
+        return empresa;
     }
 
-    public void setTelefones(List<Telefone> telefones) {
-        this.telefones = telefones;
+    public void setEmpresa(List<Empresa> empresa) {
+        this.empresa = empresa;
     }
 
+   
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -77,10 +73,10 @@ public class Cliente implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cliente)) {
+        if (!(object instanceof Sistema)) {
             return false;
         }
-        Cliente other = (Cliente) object;
+        Sistema other = (Sistema) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -89,7 +85,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Cliente[ id=" + id + " ]";
+        return "model.Entitys.Sistema[ id=" + id + " ]";
     }
-
+    
 }

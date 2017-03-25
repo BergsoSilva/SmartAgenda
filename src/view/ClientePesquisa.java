@@ -8,13 +8,13 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JMenuItem;
-import model.Entitys.Cliente;
+import model.Entitys.Empresa;
 import model.dao.ClienteDAO;
 
 public class ClientePesquisa extends javax.swing.JFrame {
     
-    private List<Cliente> clientes = new ArrayList<>();
-    private Cliente cliente= new Cliente();
+    private List<Empresa> clientes = new ArrayList<>();
+    private Empresa cliente= new Empresa();
     
     
 
@@ -30,7 +30,7 @@ public class ClientePesquisa extends javax.swing.JFrame {
         pegarPesquisa();
         try {            
             ClienteDAO dao = new ClienteController();
-            this.clientes = dao.getAll(Cliente.class);
+            this.clientes = dao.getAll(Empresa.class);
         }catch(Exception e){
             e.printStackTrace();
         }           

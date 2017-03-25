@@ -2,12 +2,12 @@ package view;
 
 import controller.ClienteController;
 import javax.swing.JOptionPane;
-import model.Entitys.Cliente;
+import model.Entitys.Empresa;
 import model.dao.ClienteDAO;
 import util.BDMensagensPadrao;
 
 public class ClienteCadastro extends javax.swing.JFrame {
-    private Cliente cliente;
+    private Empresa cliente;
     private String opcaoTela;
 
    
@@ -19,7 +19,7 @@ public class ClienteCadastro extends javax.swing.JFrame {
         btnSalavar1.setText(opcaoTela);
         this.opcaoTela="Cadastrar";
     }
-    public ClienteCadastro(Cliente  cliente){
+    public ClienteCadastro(Empresa  cliente){
         this.opcaoTela="Alterar";
         prepararCampos(cliente);
     }
@@ -28,7 +28,7 @@ public class ClienteCadastro extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     
     private void pegarDado() {
-            this.cliente = new Cliente();
+            this.cliente = new Empresa();
             this.cliente.setRazaosocial(campoRazaoSocial.getText());
          
     }
@@ -37,7 +37,7 @@ public class ClienteCadastro extends javax.swing.JFrame {
         campoRazaoSocial.setText("");
         
     }
-   private void prepararCampos(Cliente c){
+   private void prepararCampos(Empresa c){
        campoRazaoSocial.setText(c.getRazaosocial());
    }
     

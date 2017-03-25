@@ -3,15 +3,15 @@ package view;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import model.Entitys.Cliente;
+import model.Entitys.Empresa;
 
 
 public class TabelaModeloCliente extends AbstractTableModel{
     
     private String colunas[] = {"Razãoo Social"}; 
-    private List<Cliente> clientes;
+    private List<Empresa> clientes;
 
-    public TabelaModeloCliente(List<Cliente> clientes) {
+    public TabelaModeloCliente(List<Empresa> clientes) {
         this.clientes = clientes;
     }
     
@@ -27,7 +27,7 @@ public class TabelaModeloCliente extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Cliente cliente = clientes.get(rowIndex);
+        Empresa cliente = clientes.get(rowIndex);
         
         switch(columnIndex){
             case 0:

@@ -30,12 +30,10 @@ public class Telefone implements Serializable {
     private Long id;
     private String descricao;
     private String numero;
-    @ManyToOne( cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "funid", nullable = false)
+    @ManyToOne
     private Funcionario funcionario;
-    @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "cliid", nullable = false)
-    private Cliente cliente;
+    @ManyToOne
+    private Empresa empresa;
 
     public Long getId() {
         return id;
@@ -69,15 +67,14 @@ public class Telefone implements Serializable {
         this.funcionario = funcionario;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
-
-    @Override
+   @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);

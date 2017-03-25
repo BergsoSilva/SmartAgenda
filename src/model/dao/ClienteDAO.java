@@ -6,13 +6,13 @@
 package model.dao;
 
 import DataAcessObjectInterface.GenericDAOInterface;
-import model.Entitys.Cliente;
+import model.Entitys.Empresa;
 
 
 /**
  *
  * @author Unknown
  */
-public interface ClienteDAO extends GenericDAOInterface<Cliente, Integer>{
+public interface ClienteDAO extends GenericDAOInterface<Empresa, Integer>{
     
 }

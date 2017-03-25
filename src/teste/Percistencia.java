@@ -5,7 +5,7 @@
  */
 package teste;
 
-import model.Entitys.Cliente;
+import model.Entitys.Empresa;
 import controller.ClienteController;
 import model.dao.ClienteDAO;
 
@@ -16,8 +16,8 @@ import model.dao.ClienteDAO;
 public class Percistencia {
     public static void main(String[] args) {
          ClienteDAO dao = new ClienteController();
-         Cliente cliente = new Cliente();        
-          for (Cliente c : dao.getAll(Cliente.class)) {
+         Empresa cliente = new Empresa();        
+          for (Empresa c : dao.getAll(Empresa.class)) {
               System.out.println("---"+c.getRazaosocial());
         }
     }

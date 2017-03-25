@@ -2,14 +2,14 @@ package view;
 
 import controller.ClienteController;
 import javax.swing.JOptionPane;
-import model.Entitys.Cliente;
+import model.Entitys.Empresa;
 import model.dao.ClienteDAO;
 import util.BDMensagensPadrao;
 
 public class ClienteDetahes extends javax.swing.JFrame {
-    private Cliente cliente;
+    private Empresa cliente;
 
-    public ClienteDetahes( Cliente cliente) {
+    public ClienteDetahes( Empresa cliente) {
         initComponents();
         this.cliente=cliente;
         mortrarDados();

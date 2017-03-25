@@ -6,14 +6,14 @@
 package controller;
 
 import DataAcessObjectInterface.DAOImpl;
-import model.Entitys.Cliente;
+import model.Entitys.Empresa;
 import model.dao.ClienteDAO;
 
 /**
  *
  * @author Unknown
  */
-public class ClienteController extends DAOImpl<Cliente, Integer> implements ClienteDAO{
+public class ClienteController extends DAOImpl<Empresa, Integer> implements ClienteDAO{
     
 
     

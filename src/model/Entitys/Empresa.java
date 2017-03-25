@@ -12,29 +12,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  *
  * @author Unknown
  */
 @Entity
-@Table(name = "funcionario")
-public class Funcionario implements Serializable {
+public class Empresa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "funid")
+    @Column(name = "cliid")
     private Long id;
-    @Column(name = "funnome")
-    private String nome;
-    @OneToMany(mappedBy = "funcionario")
+    private String razaosocial;
+    @ManyToMany(mappedBy = "empresa")
+    private List<Sistema> sistema;
+    @OneToMany(mappedBy = "empresa")
+    private List<Funcionario> funcionarios;
+    @OneToMany(mappedBy = "empresa")
     private List<Telefone> telefones;
-    @ManyToOne
-    private Empresa empresa;
 
     public Long getId() {
         return id;
@@ -44,13 +43,38 @@ public class Funcionario implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getRazaosocial() {
+        return razaosocial;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setRazaosocial(String razaosocial) {
+        this.razaosocial = razaosocial;
     }
+
+    public List<Sistema> getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(List<Sistema> sistema) {
+        this.sistema = sistema;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
+    }
+
 
     @Override
     public int hashCode() {
@@ -62,10 +86,10 @@ public class Funcionario implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Funcionario)) {
+        if (!(object instanceof Empresa)) {
             return false;
         }
-        Funcionario other = (Funcionario) object;
+        Empresa other = (Empresa) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -74,7 +98,7 @@ public class Funcionario implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Funcionario[ id=" + id + " ]";
+        return "model.Cliente[ id=" + id + " ]";
     }
 
 }
