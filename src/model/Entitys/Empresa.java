@@ -98,7 +98,7 @@ public class Empresa implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Cliente[ id=" + id + " ]";
+        return razaosocial;
     }
 
 }
