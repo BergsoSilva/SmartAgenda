@@ -16,7 +16,7 @@ import util.ConnectionFactory;
  *
  * @author Unknown
  */
-public abstract class DAOImpl<T,I extends Serializable> implements GenericDAOInterface<T, I>{
+public abstract class DAOImpl<T,Long extends Serializable> implements GenericDAOInterface<T, Long>{
     
   private   EntityManager entymanager=null;
 
@@ -45,7 +45,7 @@ public abstract class DAOImpl<T,I extends Serializable> implements GenericDAOInt
     }
 
     @Override
-    public T getById(Class<T> classe, I pk) {
+    public T getById(Class<T> classe, Long pk) {
         try{
             return getEntitymanager().find(classe, pk);
         }catch(NoResultException ex){

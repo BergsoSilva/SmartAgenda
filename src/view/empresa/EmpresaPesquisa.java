@@ -1,6 +1,6 @@
-package view;
+package view.empresa;
 
-import controller.ClienteController;
+import controller.EmpresaController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -9,16 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JMenuItem;
 import model.Entitys.Empresa;
-import model.dao.ClienteDAO;
+import model.dao.EmpresaDAO;
 
-public class ClientePesquisa extends javax.swing.JFrame {
+public class EmpresaPesquisa extends javax.swing.JFrame {
     
     private List<Empresa> clientes = new ArrayList<>();
     private Empresa cliente= new Empresa();
     
     
 
-    public ClientePesquisa() {
+    public EmpresaPesquisa() {
         initComponents();
         prencherTabela();
         carregarMenuFlutuante();
@@ -29,7 +29,7 @@ public class ClientePesquisa extends javax.swing.JFrame {
     private void pesquisar(){        
         pegarPesquisa();
         try {            
-            ClienteDAO dao = new ClienteController();
+            EmpresaDAO dao = new EmpresaController();
             this.clientes = dao.getAll(Empresa.class);
         }catch(Exception e){
             e.printStackTrace();
@@ -39,7 +39,7 @@ public class ClientePesquisa extends javax.swing.JFrame {
      
     private void prencherTabela(){
          pesquisar();
-         tabelaClientes.setModel(new TabelaModeloCliente(clientes));
+         tabelaClientes.setModel(new TabelaModeloEmpresa(clientes));
      }
     
     private void pegarPesquisa(){
@@ -75,11 +75,11 @@ public class ClientePesquisa extends javax.swing.JFrame {
     }
     
     private void verDetalhes(){
-        ClienteDetahes detalhes= new ClienteDetahes(this.cliente);
+        EmpresaDetahes detalhes= new EmpresaDetahes(this.cliente);
         detalhes.setVisible(true);
     }
     private void alterar(){
-        //ClienteDetahes detalhes= new ClienteDetahes();
+        //ClienteDetahes detalhes= new EmpresaDetahes();
         //detalhes.setVisi voidle(true);
     }
     
@@ -266,7 +266,7 @@ public class ClientePesquisa extends javax.swing.JFrame {
     }//GEN-LAST:event_camoPesquisaKeyPressed
 
     private void botaoNovoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoNovoMouseReleased
-        ClienteCadastro cadasro = new ClienteCadastro();
+        EmpresaCadastro cadasro = new EmpresaCadastro();
         cadasro.setVisible(true);
     }//GEN-LAST:event_botaoNovoMouseReleased
 
@@ -293,20 +293,21 @@ public class ClientePesquisa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientePesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpresaPesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientePesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpresaPesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientePesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpresaPesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClientePesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpresaPesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClientePesquisa().setVisible(true);
+                new EmpresaPesquisa().setVisible(true);
             }
         });
     }

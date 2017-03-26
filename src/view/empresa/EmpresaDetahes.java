@@ -1,15 +1,15 @@
-package view;
+package view.empresa;
 
-import controller.ClienteController;
+import controller.EmpresaController;
 import javax.swing.JOptionPane;
 import model.Entitys.Empresa;
-import model.dao.ClienteDAO;
 import util.BDMensagensPadrao;
+import model.dao.EmpresaDAO;
 
-public class ClienteDetahes extends javax.swing.JFrame {
+public class EmpresaDetahes extends javax.swing.JFrame {
     private Empresa cliente;
 
-    public ClienteDetahes( Empresa cliente) {
+    public EmpresaDetahes( Empresa cliente) {
         initComponents();
         this.cliente=cliente;
         mortrarDados();
@@ -142,7 +142,7 @@ public class ClienteDetahes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirMouseReleased
 
     public boolean excluir (){
-        ClienteDAO dao = new ClienteController();
+        EmpresaDAO dao = new EmpresaController();
         try{
             dao.remove(cliente);
             return true;

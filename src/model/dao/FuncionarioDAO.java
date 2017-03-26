@@ -13,6 +13,6 @@ import model.Entitys.Funcionario;
  *
  * @author Unknown
  */
-public interface FuncionarioDAO extends GenericDAOInterface<Funcionario, Integer>{
+public interface FuncionarioDAO extends GenericDAOInterface<Funcionario, Long>{
     
 }

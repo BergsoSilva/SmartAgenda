@@ -1,4 +1,4 @@
-package view;
+package view.empresa;
 
 
 import java.util.List;
@@ -6,12 +6,12 @@ import javax.swing.table.AbstractTableModel;
 import model.Entitys.Empresa;
 
 
-public class TabelaModeloCliente extends AbstractTableModel{
+public class TabelaModeloEmpresa extends AbstractTableModel{
     
     private String colunas[] = {"Razãoo Social"}; 
     private List<Empresa> clientes;
 
-    public TabelaModeloCliente(List<Empresa> clientes) {
+    public TabelaModeloEmpresa(List<Empresa> clientes) {
         this.clientes = clientes;
     }
     

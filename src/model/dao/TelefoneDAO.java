@@ -12,6 +12,6 @@ import model.Entitys.Telefone;
  *
  * @author Unknown
  */
-public interface TelefoneDAO extends GenericDAOInterface<Telefone, Integer>{
+public interface TelefoneDAO extends GenericDAOInterface<Telefone, Long>{
     
 }

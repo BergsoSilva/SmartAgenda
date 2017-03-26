@@ -13,10 +13,10 @@ import javax.persistence.EntityManager;
  *
  * @author Unknown
  */
-public interface GenericDAOInterface<T,I extends Serializable>{
+public interface GenericDAOInterface<T,Long extends Serializable>{
     public T save(T entity);
     public void remove(T entity);
-    public T getById(Class<T> classe, I pk);
+    public T getById(Class<T> classe, Long pk);
     public List<T> getAll(Class<T> classe);
     public T edit(T entiyt);
     public EntityManager getEntitymanager();

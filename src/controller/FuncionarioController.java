@@ -14,7 +14,7 @@ import model.dao.FuncionarioDAO;
  *
  * @author Unknown
  */
-public class FuncionarioController extends DAOImpl<Funcionario, Integer> implements FuncionarioDAO{
+public class FuncionarioController extends DAOImpl<Funcionario,Long> implements FuncionarioDAO{
    
     
 }

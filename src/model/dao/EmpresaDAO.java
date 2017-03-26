@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package model.dao;
 
-import DataAcessObjectInterface.DAOImpl;
+import DataAcessObjectInterface.GenericDAOInterface;
 import model.Entitys.Empresa;
-import model.dao.ClienteDAO;
+
 
 /**
  *
  * @author Unknown
  */
-public class ClienteController extends DAOImpl<Empresa, Integer> implements ClienteDAO{
-    
-
+public interface EmpresaDAO extends GenericDAOInterface<Empresa, Long>{
     
 }

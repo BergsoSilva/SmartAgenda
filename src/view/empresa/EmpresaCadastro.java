@@ -1,17 +1,17 @@
-package view;
+package view.empresa;
 
-import controller.ClienteController;
+import controller.EmpresaController;
 import javax.swing.JOptionPane;
 import model.Entitys.Empresa;
-import model.dao.ClienteDAO;
 import util.BDMensagensPadrao;
+import model.dao.EmpresaDAO;
 
-public class ClienteCadastro extends javax.swing.JFrame {
+public class EmpresaCadastro extends javax.swing.JFrame {
     private Empresa cliente;
     private String opcaoTela;
 
    
-    public ClienteCadastro() {
+    public EmpresaCadastro() {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(this);
@@ -19,7 +19,7 @@ public class ClienteCadastro extends javax.swing.JFrame {
         btnSalavar1.setText(opcaoTela);
         this.opcaoTela="Cadastrar";
     }
-    public ClienteCadastro(Empresa  cliente){
+    public EmpresaCadastro(Empresa  cliente){
         this.opcaoTela="Alterar";
         prepararCampos(cliente);
     }
@@ -47,7 +47,7 @@ public class ClienteCadastro extends javax.swing.JFrame {
     }
     
     public void cadastrar(){
-        ClienteDAO dao = new ClienteController();
+        EmpresaDAO dao = new EmpresaController();
         try{
             pegarDado();
             dao.save(cliente);
@@ -60,7 +60,7 @@ public class ClienteCadastro extends javax.swing.JFrame {
     }
     public void editar(){
         pegarDado();
-        ClienteDAO dao = new ClienteController();
+        EmpresaDAO dao = new EmpresaController();
         try{
            // dao.
         }catch(Exception  ex ){
