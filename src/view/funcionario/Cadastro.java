@@ -74,6 +74,7 @@ public class Cadastro extends javax.swing.JFrame {
     }
 
     public void cadastrar() {
+        
         pegarDados();
         FuncionarioDAO dao = new FuncionarioController();
 
@@ -228,6 +229,7 @@ public class Cadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalavar1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalavar1MouseReleased
+      
         if (opcaoTela.equals("Cadastrar")) {
             cadastrar();
         } else if (opcaoTela.equals("Alterar")) {
