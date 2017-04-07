@@ -7,7 +7,7 @@ package teste;
 
 import controller.EmpresaController;
 import controller.FuncionarioController;
-import controller.TelefoneControle;
+import controller.TelefoneController;
 import model.Entitys.Empresa;
 import model.Entitys.Funcionario;
 import model.Entitys.Telefone;
@@ -22,9 +22,9 @@ import model.dao.TelefoneDAO;
  */
 public class Percistencia {
     public static void main(String[] args) {
-       Funcionario fun = new Funcionario();
+      /* Funcionario fun = new Funcionario();
        EmpresaDAO emdao= new EmpresaController();
-       TelefoneDAO teldao= new TelefoneControle();
+       TelefoneDAO teldao= new TelefoneController();
        FuncionarioDAO  fundao = new FuncionarioController();
        Telefone tel= new Telefone();
        
@@ -36,7 +36,7 @@ public class Percistencia {
        tel.setFuncionario(fun);
        tel.setNumero("111111111111111");
        
-       teldao.save(tel);
+       teldao.save(tel);*/
         
     }
 }

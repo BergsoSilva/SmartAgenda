@@ -7,10 +7,13 @@ package model.Entitys;
 
 import java.io.Serializable;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -20,9 +23,10 @@ import javax.persistence.Table;
  *
  * @author Unknown
  */
+ @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "telefone")
-public class Telefone implements Serializable {
+public abstract class Telefone implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -30,11 +34,8 @@ public class Telefone implements Serializable {
     private Long id;
     private String descricao;
     private String numero;
-    @ManyToOne
-    private Funcionario funcionario;
-    @ManyToOne
-    private Empresa empresa;
-
+    
+  
     public Long getId() {
         return id;
     }
@@ -59,44 +60,6 @@ public class Telefone implements Serializable {
         this.numero = numero;
     }
 
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
-
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
-   @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Telefone)) {
-            return false;
-        }
-        Telefone other = (Telefone) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model.Telefone[ id=" + id + " ]";
-    }
-
+   
+   
 }

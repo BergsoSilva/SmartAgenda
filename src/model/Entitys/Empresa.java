@@ -33,7 +33,7 @@ public class Empresa implements Serializable {
     @OneToMany(mappedBy = "empresa")
     private List<Funcionario> funcionarios;
     @OneToMany(mappedBy = "empresa")
-    private List<Telefone> telefones;
+    private List<TelefoneEmpresa> telefones;
 
     public Long getId() {
         return id;
@@ -67,14 +67,13 @@ public class Empresa implements Serializable {
         this.funcionarios = funcionarios;
     }
 
-    public List<Telefone> getTelefones() {
+    public List<TelefoneEmpresa> getTelefones() {
         return telefones;
     }
 
-    public void setTelefones(List<Telefone> telefones) {
+    public void setTelefones(List<TelefoneEmpresa> telefones) {
         this.telefones = telefones;
     }
-
 
     @Override
     public int hashCode() {

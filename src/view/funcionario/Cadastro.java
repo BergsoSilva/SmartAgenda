@@ -47,6 +47,7 @@ public class Cadastro extends javax.swing.JFrame {
     public void liparCampos() {
         campoNome.setText("");
         comboEmpresa.setSelectedIndex(0);
+        campoFuncao.setText("");
     }
 
     private void preparaNomes() {
@@ -54,12 +55,13 @@ public class Cadastro extends javax.swing.JFrame {
         btnSalavar1.setText(opcaoTela);
         campoNome.setText(this.funcionario.getNome());
         comboEmpresa.setSelectedItem(this.funcionario.getEmpresa());
+        campoFuncao.setText(this.funcionario.getFuncao());
     }
 
     private void preencherCombobox() {
 
         comboEmpresa.removeAllItems();
-        comboEmpresa.addItem("Selecione a empresa..");
+        comboEmpresa.addItem("Selecione a empresa...");
         EmpresaDAO dao = new EmpresaController();
         for (Empresa em : dao.getAll(Empresa.class)) {
             comboEmpresa.addItem(em);
@@ -68,8 +70,9 @@ public class Cadastro extends javax.swing.JFrame {
 
     private void pegarDados() {
 
-        funcionario.setNome(campoNome.getText());
-        funcionario.setEmpresa((Empresa) comboEmpresa.getSelectedItem());
+        this.funcionario.setNome(campoNome.getText());
+        this.funcionario.setEmpresa((Empresa) comboEmpresa.getSelectedItem());
+        this.funcionario.setFuncao(campoFuncao.getText());
 
     }
 
@@ -113,6 +116,8 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
         comboEmpresa = new javax.swing.JComboBox<>();
+        campoFuncao = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         painelButoes = new javax.swing.JPanel();
         btnSalavar1 = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -144,16 +149,25 @@ public class Cadastro extends javax.swing.JFrame {
 
         comboEmpresa.setModel(new javax.swing.DefaultComboBoxModel<>(new Object[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        campoFuncao.setFont(new java.awt.Font("Dialog", 2, 14)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Função");
+
         javax.swing.GroupLayout painelDadosLayout = new javax.swing.GroupLayout(painelDados);
         painelDados.setLayout(painelDadosLayout);
         painelDadosLayout.setHorizontalGroup(
             painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDadosLayout.createSequentialGroup()
+            .addGroup(painelDadosLayout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(comboEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3)
+                        .addComponent(campoFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         painelDadosLayout.setVerticalGroup(
@@ -163,9 +177,13 @@ public class Cadastro extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(comboEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         btnSalavar1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -252,11 +270,13 @@ public class Cadastro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalavar1;
+    private javax.swing.JTextField campoFuncao;
     private javax.swing.JTextField campoNome;
     private javax.swing.JComboBox<Object> comboEmpresa;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel painelButoes;

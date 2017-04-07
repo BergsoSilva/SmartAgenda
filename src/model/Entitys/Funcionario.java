@@ -31,8 +31,11 @@ public class Funcionario implements Serializable {
     private Long id;
     @Column(name = "funnome")
     private String nome;
+    
+    private String funcao;
+    
     @OneToMany(mappedBy = "funcionario")
-    private List<Telefone> telefones;
+    private List<TelefoneFuncionario> telefones;
     @ManyToOne
     private Empresa empresa;
 
@@ -52,13 +55,15 @@ public class Funcionario implements Serializable {
         this.nome = nome;
     }
 
-    public List<Telefone> getTelefones() {
+    public List<TelefoneFuncionario> getTelefones() {
         return telefones;
     }
 
-    public void setTelefones(List<Telefone> telefones) {
+    public void setTelefones(List<TelefoneFuncionario> telefones) {
         this.telefones = telefones;
     }
+
+    
 
     public Empresa getEmpresa() {
         return empresa;
@@ -68,13 +73,22 @@ public class Funcionario implements Serializable {
         this.empresa = empresa;
     }
 
+    public String getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -90,7 +104,7 @@ public class Funcionario implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Funcionario[ id=" + id + " ]";
+        return nome;
     }
 
 }

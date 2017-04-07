@@ -14,7 +14,7 @@ import model.dao.TelefoneDAO;
  *
  * @author Unknown
  */
-public class TelefoneControle extends DAOImpl<Telefone, Long> implements TelefoneDAO{
+public class TelefoneController extends DAOImpl<Telefone, Long> implements TelefoneDAO{
     
     
 }

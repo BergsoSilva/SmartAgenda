@@ -6,6 +6,7 @@
 package DataAcessObjectInterface;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -29,11 +30,13 @@ public abstract class DAOImpl<T,Long extends Serializable> implements GenericDAO
 
     @Override
     public T save(T entity) {
-         T saved = null;
-         entymanager.getTransaction().begin();
-         saved= entymanager.merge(entity);
-         entymanager.getTransaction().commit();
-         return  saved;
+
+             T saved = null;
+            entymanager.getTransaction().begin();
+            saved= entymanager.merge(entity);
+            entymanager.getTransaction().commit();
+            return  saved;
+      
     }
 
     @Override

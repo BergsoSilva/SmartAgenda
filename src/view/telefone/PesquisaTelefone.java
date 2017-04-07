@@ -1,8 +1,10 @@
-package view.funcionario;
+package view.telefone;
 
+import view.funcionario.*;
 import view.empresa.*;
 import controller.EmpresaController;
 import controller.FuncionarioController;
+import controller.TelefoneController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -11,16 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JMenuItem;
 import model.Entitys.Funcionario;
+import model.Entitys.Telefone;
 import model.dao.FuncionarioDAO;
+import model.dao.TelefoneDAO;
 
-public class Pesquisa extends javax.swing.JFrame {
+public class PesquisaTelefone extends javax.swing.JFrame {
     
-    private List<Funcionario> funcionarios  = new ArrayList<>();
-    private Funcionario funcionario= new Funcionario();
+    private List<Telefone> telefones  = new ArrayList<>();
+    private Telefone telefone;
     
     
 
-    public Pesquisa() {
+    public PesquisaTelefone() {
         initComponents();
         prencherTabela();
         carregarMenuFlutuante();
@@ -31,8 +35,8 @@ public class Pesquisa extends javax.swing.JFrame {
     private void pesquisar(){        
         pegarPesquisa();
         try {            
-            FuncionarioDAO dao = new FuncionarioController();
-            this.funcionarios = dao.getAll(Funcionario.class);
+            TelefoneDAO dao = new TelefoneController();
+            this.telefones = dao.getAll(Telefone.class);
         }catch(Exception e){
             e.printStackTrace();
         }           
@@ -41,11 +45,11 @@ public class Pesquisa extends javax.swing.JFrame {
      
     private void prencherTabela(){
          pesquisar();
-         tabela.setModel(new TabelaModelo(funcionarios));
+         tabela.setModel(new TabelaModeloTelefone(telefones));
      }
     
     private void pegarPesquisa(){
-        this.funcionario.setNome(camoPesquisa.getText());
+        this.telefone.setNumero(camoPesquisa.getText());
     }
     
     private void carregarMenuFlutuante(){
@@ -78,11 +82,11 @@ public class Pesquisa extends javax.swing.JFrame {
     
     private void verDetalhes(){
         
-        Detahes detalhes= new Detahes(this.funcionario);
+        DetahesTelefone detalhes= new DetahesTelefone(this.telefone);
         detalhes.setVisible(true);
     }
     private void alterar(){
-        //ClienteDetahes detalhes= new Detahes();
+        //ClienteDetahes detalhes= new DetahesTelefone();
         //detalhes.setVisi voidle(true);
     }
     
@@ -91,7 +95,7 @@ public class Pesquisa extends javax.swing.JFrame {
         if(linha > -1){
             tabela.setRowSelectionInterval(linha,linha);
             linha= tabela.getSelectedRow();
-            this.funcionario= funcionarios.get(linha);
+            this.telefone= telefones.get(linha);
         }
     }
     private void realizarAcao(MouseEvent evt){
@@ -270,7 +274,7 @@ public class Pesquisa extends javax.swing.JFrame {
     }//GEN-LAST:event_camoPesquisaKeyPressed
 
     private void botaoNovoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoNovoMouseReleased
-        Cadastro cadasro = new Cadastro();
+        CadastroTelefone cadasro = new CadastroTelefone();
         cadasro.setVisible(true);
     }//GEN-LAST:event_botaoNovoMouseReleased
 
@@ -297,27 +301,19 @@ public class Pesquisa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PesquisaTelefone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PesquisaTelefone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PesquisaTelefone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PesquisaTelefone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pesquisa().setVisible(true);
+                new PesquisaTelefone().setVisible(true);
             }
         });
     }
