@@ -8,13 +8,13 @@ package controller;
 import DataAcessObjectInterface.DAOImpl;
 import javax.persistence.EntityManager;
 import model.Entitys.Telefone;
-import model.dao.TelefoneDAO;
+import model.dao.TelefoneFuncionarioDAO;
 
 /**
  *
  * @author Unknown
  */
-public class TelefoneController extends DAOImpl<Telefone, Long> implements TelefoneDAO{
+public class TelefoneFucionarioController extends DAOImpl<Telefone, Long> implements TelefoneFuncionarioDAO{
     
     
 }

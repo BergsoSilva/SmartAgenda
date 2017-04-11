@@ -4,14 +4,14 @@ import view.funcionario.*;
 import view.empresa.*;
 import controller.EmpresaController;
 import controller.FuncionarioController;
-import controller.TelefoneController;
+import controller.TelefoneFucionarioController;
 import javax.swing.JOptionPane;
 import model.Entitys.Empresa;
 import model.Entitys.Funcionario;
 import model.Entitys.Telefone;
 import util.BDMensagensPadrao;
 import model.dao.FuncionarioDAO;
-import model.dao.TelefoneDAO;
+import model.dao.TelefoneFuncionarioDAO;
 
 public class DetahesTelefone extends javax.swing.JFrame {
     private Telefone telefone;
@@ -173,7 +173,7 @@ public class DetahesTelefone extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirMouseReleased
 
     public boolean excluir (){
-         TelefoneDAO dao = new TelefoneController();
+         TelefoneFuncionarioDAO dao = new TelefoneFucionarioController();
         try{
             dao.remove(telefone);
             return true;

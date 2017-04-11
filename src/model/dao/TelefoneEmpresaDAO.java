@@ -6,12 +6,12 @@
 package model.dao;
 
 import DataAcessObjectInterface.GenericDAOInterface;
-import model.Entitys.Telefone;
+import model.Entitys.TelefoneEmpresa;
 
 /**
  *
  * @author Unknown
  */
-public interface TelefoneDAO extends GenericDAOInterface<Telefone, Long>{
+public interface TelefoneEmpresaDAO extends GenericDAOInterface<TelefoneEmpresa, Long>{
     
 }

@@ -4,7 +4,7 @@ import view.funcionario.*;
 import view.empresa.*;
 import controller.EmpresaController;
 import controller.FuncionarioController;
-import controller.TelefoneController;
+import controller.TelefoneFucionarioController;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -16,7 +16,7 @@ import model.Entitys.TelefoneFuncionario;
 import util.BDMensagensPadrao;
 import model.dao.EmpresaDAO;
 import model.dao.FuncionarioDAO;
-import model.dao.TelefoneDAO;
+import model.dao.TelefoneFuncionarioDAO;
 
 public class CadastroTelefone extends javax.swing.JFrame {
 
@@ -106,7 +106,7 @@ public class CadastroTelefone extends javax.swing.JFrame {
 
     public void cadastrar() {
 
-        TelefoneDAO dao = new TelefoneController();
+        TelefoneFuncionarioDAO dao = new TelefoneFucionarioController();
 
         if (jRadioButtonEmpresa.isSelected()) {
             TelefoneEmpresa telempresa = new TelefoneEmpresa();
@@ -131,7 +131,7 @@ public class CadastroTelefone extends javax.swing.JFrame {
 
     public void editarTelEmpresa(TelefoneEmpresa em) {
 
-        TelefoneDAO dao = new TelefoneController();
+        TelefoneFuncionarioDAO dao = new TelefoneFucionarioController();
 
         em.setDescricao(campoDescricao.getText());
         em.setNumero(campoNumero.getText());
@@ -143,7 +143,7 @@ public class CadastroTelefone extends javax.swing.JFrame {
 
     public void editarTelFuncionario(TelefoneFuncionario fun) {
 
-        TelefoneDAO dao = new TelefoneController();
+        TelefoneFuncionarioDAO dao = new TelefoneFucionarioController();
 
         fun.setDescricao(campoDescricao.getText());
         fun.setNumero(campoNumero.getText());

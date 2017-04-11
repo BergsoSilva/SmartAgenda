@@ -4,7 +4,7 @@ import view.funcionario.*;
 import view.empresa.*;
 import controller.EmpresaController;
 import controller.FuncionarioController;
-import controller.TelefoneController;
+import controller.TelefoneFucionarioController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -12,10 +12,10 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JMenuItem;
-import model.Entitys.Funcionario;
+
 import model.Entitys.Telefone;
-import model.dao.FuncionarioDAO;
-import model.dao.TelefoneDAO;
+
+import model.dao.TelefoneFuncionarioDAO;
 
 public class PesquisaTelefone extends javax.swing.JFrame {
     
@@ -35,7 +35,7 @@ public class PesquisaTelefone extends javax.swing.JFrame {
     private void pesquisar(){        
         pegarPesquisa();
         try {            
-            TelefoneDAO dao = new TelefoneController();
+            TelefoneFuncionarioDAO dao = new TelefoneFucionarioController();
             this.telefones = dao.getAll(Telefone.class);
         }catch(Exception e){
             e.printStackTrace();

@@ -1,12 +1,9 @@
 package view.telefone;
 
 
-import view.funcionario.*;
-import view.empresa.*;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import model.Entitys.Empresa;
-import model.Entitys.Funcionario;
+
 import model.Entitys.Telefone;
 
 

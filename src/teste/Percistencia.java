@@ -7,13 +7,13 @@ package teste;
 
 import controller.EmpresaController;
 import controller.FuncionarioController;
-import controller.TelefoneController;
+import controller.TelefoneFucionarioController;
 import model.Entitys.Empresa;
 import model.Entitys.Funcionario;
 import model.Entitys.Telefone;
 import model.dao.EmpresaDAO;
 import model.dao.FuncionarioDAO;
-import model.dao.TelefoneDAO;
+import model.dao.TelefoneFuncionarioDAO;
 
 
 /**
@@ -24,7 +24,7 @@ public class Percistencia {
     public static void main(String[] args) {
       /* Funcionario fun = new Funcionario();
        EmpresaDAO emdao= new EmpresaController();
-       TelefoneDAO teldao= new TelefoneController();
+       TelefoneFuncionarioDAO teldao= new TelefoneFucionarioController();
        FuncionarioDAO  fundao = new FuncionarioController();
        Telefone tel= new Telefone();
        
