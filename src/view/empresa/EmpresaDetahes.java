@@ -84,6 +84,11 @@ public class EmpresaDetahes extends javax.swing.JFrame {
                 btnAlterarMouseReleased(evt);
             }
         });
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
         painelButoes.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 11, 79, 54));
 
         btnCancelar.setText("Cancelar");
@@ -163,6 +168,10 @@ public class EmpresaDetahes extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(null,"Operação cencelada");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+     EmpresaCadastro elterar = new EmpresaCadastro(this.cliente);
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;

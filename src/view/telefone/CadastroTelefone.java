@@ -4,6 +4,7 @@ import view.funcionario.*;
 import view.empresa.*;
 import controller.EmpresaController;
 import controller.FuncionarioController;
+import controller.TelefoneEmpresaController;
 import controller.TelefoneFucionarioController;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import model.Entitys.TelefoneFuncionario;
 import util.BDMensagensPadrao;
 import model.dao.EmpresaDAO;
 import model.dao.FuncionarioDAO;
+import model.dao.TelefoneEmpresaDAO;
 import model.dao.TelefoneFuncionarioDAO;
 
 public class CadastroTelefone extends javax.swing.JFrame {
@@ -51,7 +53,7 @@ public class CadastroTelefone extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(this);
-        this.opcaoTela = "Cadastrar";
+        this.opcaoTela = "Salvar";
         btnSalavar1.setText(opcaoTela);
         setTitle(opcaoTela + " Funcionario");
         preencherCombobox();
@@ -106,9 +108,10 @@ public class CadastroTelefone extends javax.swing.JFrame {
 
     public void cadastrar() {
 
-        TelefoneFuncionarioDAO dao = new TelefoneFucionarioController();
+        
 
         if (jRadioButtonEmpresa.isSelected()) {
+            TelefoneEmpresaDAO dao = new TelefoneEmpresaController();
             TelefoneEmpresa telempresa = new TelefoneEmpresa();
             telempresa.setDescricao(campoDescricao.getText());
             telempresa.setNumero(campoNumero.getText());
@@ -117,6 +120,7 @@ public class CadastroTelefone extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, BDMensagensPadrao.CADASTRADO_COM_SUCESSO);
             liparCampos();
         } else if (jRadioButtonFuncionario.isSelected()) {
+            TelefoneFuncionarioDAO dao = new TelefoneFucionarioController();
             TelefoneFuncionario telFun = new TelefoneFuncionario();
 
             telFun.setDescricao(campoDescricao.getText());
@@ -131,7 +135,7 @@ public class CadastroTelefone extends javax.swing.JFrame {
 
     public void editarTelEmpresa(TelefoneEmpresa em) {
 
-        TelefoneFuncionarioDAO dao = new TelefoneFucionarioController();
+        TelefoneEmpresaDAO dao = new TelefoneEmpresaController();
 
         em.setDescricao(campoDescricao.getText());
         em.setNumero(campoNumero.getText());

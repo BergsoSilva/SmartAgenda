@@ -6,6 +6,7 @@
 package model.dao;
 
 import DataAcessObjectInterface.GenericDAOInterface;
+import model.Entitys.Telefone;
 import model.Entitys.TelefoneEmpresa;
 
 /**

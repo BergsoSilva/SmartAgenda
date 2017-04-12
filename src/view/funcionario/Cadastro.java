@@ -35,7 +35,7 @@ public class Cadastro extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(this);
-        this.opcaoTela = "Cadastrar";
+        this.opcaoTela = "Salvar";
         btnSalavar1.setText(opcaoTela);
         setTitle(opcaoTela + " Funcionario");
         //preparaNomes();
@@ -248,7 +248,7 @@ public class Cadastro extends javax.swing.JFrame {
 
     private void btnSalavar1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalavar1MouseReleased
       
-        if (opcaoTela.equals("Cadastrar")) {
+        if (opcaoTela.equals("Salvar")) {
             cadastrar();
         } else if (opcaoTela.equals("Alterar")) {
             editar();

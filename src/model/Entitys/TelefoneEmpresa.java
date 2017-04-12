@@ -25,7 +25,7 @@ public class TelefoneEmpresa extends Telefone{
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
-    
+
     
     
 }

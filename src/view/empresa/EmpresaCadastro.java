@@ -15,13 +15,14 @@ public class EmpresaCadastro extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(this);
-        this.opcaoTela="Cadastrar";
+        this.opcaoTela="Salvar";
         btnSalavar1.setText(opcaoTela);
-        this.opcaoTela="Cadastrar";
+      
     }
-    public EmpresaCadastro(Empresa  cliente){
+  
+    public EmpresaCadastro(Empresa  empresa){
         this.opcaoTela="Alterar";
-        prepararCampos(cliente);
+        prepararCampos(empresa);
     }
 
    

@@ -7,13 +7,15 @@ package controller;
 
 import DataAcessObjectInterface.DAOImpl;
 import model.Entitys.Telefone;
+import model.Entitys.TelefoneEmpresa;
+import model.dao.TelefoneEmpresaDAO;
 import model.dao.TelefoneFuncionarioDAO;
 
 /**
  *
  * @author Unknown
  */
-public class TelefoneEmpresaController extends DAOImpl<Telefone, Long> implements TelefoneFuncionarioDAO{
+public class TelefoneEmpresaController extends DAOImpl<TelefoneEmpresa, Long> implements TelefoneEmpresaDAO{
     
     
 }

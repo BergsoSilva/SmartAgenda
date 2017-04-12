@@ -26,10 +26,12 @@ public class TelefoneFuncionario extends Telefone{
     public Funcionario getFuncionario() {
         return funcionario;
     }
-    
-    
-    
 
+    @Override
+    public String toString() {
+        return "TelefoneFuncionario{" + "funcionario=" + funcionario + '}';
+    }
     
-    
+   
+   
 }

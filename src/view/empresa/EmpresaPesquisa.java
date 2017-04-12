@@ -8,10 +8,10 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import model.Entitys.Empresa;
 import model.dao.EmpresaDAO;
 import view.funcionario.Pesquisa;
+
 
 public class EmpresaPesquisa extends javax.swing.JFrame {
     
@@ -121,8 +121,11 @@ public class EmpresaPesquisa extends javax.swing.JFrame {
         botaoNovo = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItemSair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemFuncinario = new javax.swing.JMenuItem();
+        jMenuItemTelefone = new javax.swing.JMenuItem();
+        jMenuItemEmpresa = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -252,6 +255,15 @@ public class EmpresaPesquisa extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
 
         jMenu1.setText("File");
+
+        jMenuItemSair.setText("Sair");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemSair);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -261,13 +273,24 @@ public class EmpresaPesquisa extends javax.swing.JFrame {
             }
         });
 
-        jMenuItemFuncinario.setText("Funcionario");
+        jMenuItemFuncinario.setText("Fucionario");
         jMenuItemFuncinario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemFuncinarioActionPerformed(evt);
             }
         });
         jMenu2.add(jMenuItemFuncinario);
+
+        jMenuItemTelefone.setText("Telefone");
+        jMenuItemTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTelefoneActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemTelefone);
+
+        jMenuItemEmpresa.setText("Empresa");
+        jMenu2.add(jMenuItemEmpresa);
 
         jMenuBar1.add(jMenu2);
 
@@ -318,6 +341,15 @@ public class EmpresaPesquisa extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jMenuItemFuncinarioActionPerformed
 
+    private void jMenuItemTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelefoneActionPerformed
+//      CadastroTelefone telefone = new CadastroTelefone();
+//      telefone.setVisible(true);
+    }//GEN-LAST:event_jMenuItemTelefoneActionPerformed
+
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -359,7 +391,10 @@ public class EmpresaPesquisa extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemEmpresa;
     private javax.swing.JMenuItem jMenuItemFuncinario;
+    private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenuItem jMenuItemTelefone;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
