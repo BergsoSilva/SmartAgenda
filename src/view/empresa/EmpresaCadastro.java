@@ -7,7 +7,7 @@ import util.BDMensagensPadrao;
 import model.dao.EmpresaDAO;
 
 public class EmpresaCadastro extends javax.swing.JFrame {
-    private Empresa cliente;
+    private Empresa empresa;
     private String opcaoTela;
 
    
@@ -17,20 +17,21 @@ public class EmpresaCadastro extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         this.opcaoTela="Salvar";
         btnSalavar1.setText(opcaoTela);
+        
+        campoRazaoSocial.setText("Digite o nome da empresa....");
       
     }
   
-    public EmpresaCadastro(Empresa  empresa){
+    public EmpresaCadastro(Empresa  e){
+        this.empresa=e;
         this.opcaoTela="Alterar";
-        prepararCampos(empresa);
+         
+       prepararCampos();
     }
-
-   
-    @SuppressWarnings("unchecked")
-    
+  
     private void pegarDado() {
-            this.cliente = new Empresa();
-            this.cliente.setRazaosocial(campoRazaoSocial.getText());
+            this.empresa = new Empresa();
+            this.empresa.setRazaosocial(campoRazaoSocial.getText());
          
     }
     
@@ -38,21 +39,25 @@ public class EmpresaCadastro extends javax.swing.JFrame {
         campoRazaoSocial.setText("");
         
     }
-   private void prepararCampos(Empresa c){
-       campoRazaoSocial.setText(c.getRazaosocial());
+   private void prepararCampos(){
+      
+      campoRazaoSocial.setText("");
    }
     
    private void preparaNomes(){
-        setTitle(opcaoTela + "Clientes");
+        setTitle(opcaoTela + "Cliente");
         btnSalavar1.setText(opcaoTela);
     }
     
     public void cadastrar(){
-        EmpresaDAO dao = new EmpresaController();
+       EmpresaDAO dao = new EmpresaController();
+       Empresa empresa= new Empresa();
+       empresa.setRazaosocial(campoRazaoSocial.getText());
+
         try{
             pegarDado();
-            dao.save(cliente);
-            JOptionPane.showMessageDialog(this,cliente.getRazaosocial()+BDMensagensPadrao.CADASTRADO_COM_SUCESSO);
+            dao.save(empresa);
+            JOptionPane.showMessageDialog(this,empresa.getRazaosocial()+BDMensagensPadrao.CADASTRADO_COM_SUCESSO);
             liparCampos();
         }catch(Exception e){
             e.printStackTrace();
@@ -103,7 +108,7 @@ public class EmpresaCadastro extends javax.swing.JFrame {
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(campoRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         painelDadosLayout.setVerticalGroup(
             painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +117,7 @@ public class EmpresaCadastro extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
 
         btnSalavar1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -177,8 +182,11 @@ public class EmpresaCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalavar1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalavar1MouseReleased
-        if (opcaoTela.endsWith("Cadastrar"))
+   
+        if (opcaoTela.equals("Salvar")){
             cadastrar();
+        }
+            
             
     }//GEN-LAST:event_btnSalavar1MouseReleased
 

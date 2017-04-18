@@ -11,54 +11,52 @@ import javax.swing.JMenuItem;
 import model.Entitys.Empresa;
 import model.dao.EmpresaDAO;
 import view.funcionario.Pesquisa;
-
+import view.telefone.CadastroTelefone;
 
 public class EmpresaPesquisa extends javax.swing.JFrame {
-    
+
     private List<Empresa> clientes = new ArrayList<>();
-    private Empresa cliente= new Empresa();
-    
-    
+    private Empresa cliente = new Empresa();
 
     public EmpresaPesquisa() {
         initComponents();
         prencherTabela();
         carregarMenuFlutuante();
         setLocationRelativeTo(this);
-       
+
     }
-    
-    private void pesquisar(){        
+
+    private void pesquisar() {
         pegarPesquisa();
-        try {            
+        try {
             EmpresaDAO dao = new EmpresaController();
             this.clientes = dao.getAll(Empresa.class);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }           
-        
+        }
+
     }
-     
-    private void prencherTabela(){
-         pesquisar();
-         tabelaClientes.setModel(new TabelaModeloEmpresa(clientes));
-     }
-    
-    private void pegarPesquisa(){
+
+    private void prencherTabela() {
+        pesquisar();
+        tabelaClientes.setModel(new TabelaModeloEmpresa(clientes));
+    }
+
+    private void pegarPesquisa() {
         this.cliente.setRazaosocial(camoPesquisa.getText());
     }
-    
-    private void carregarMenuFlutuante(){
+
+    private void carregarMenuFlutuante() {
         JMenuItem menuItem[] = {new JMenuItem("Ver detalhes"), new JMenuItem("Alterar")};
-        
+
         menuItem[0].addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-               verDetalhes();
+                verDetalhes();
             }
         });
-        
+
         menuItem[1].addActionListener(new ActionListener() {
 
             @Override
@@ -70,41 +68,42 @@ public class EmpresaPesquisa extends javax.swing.JFrame {
                 }
             }
         });
-        
+
         for (JMenuItem menuItem1 : menuItem) {
             popupOperacoes.add(menuItem1);
         }
     }
-    
-    private void verDetalhes(){
-        EmpresaDetahes detalhes= new EmpresaDetahes(this.cliente);
+
+    private void verDetalhes() {
+        EmpresaDetahes detalhes = new EmpresaDetahes(this.cliente);
         detalhes.setVisible(true);
     }
-    private void alterar(){
+
+    private void alterar() {
         //ClienteDetahes detalhes= new EmpresaDetahes();
         //detalhes.setVisi voidle(true);
     }
-    
-    private void selecionarLinha( MouseEvent evt){
-        int linha= tabelaClientes.rowAtPoint(evt.getPoint());
-        if(linha > -1){
-            tabelaClientes.setRowSelectionInterval(linha,linha);
-            linha= tabelaClientes.getSelectedRow();
-            this.cliente= clientes.get(linha);
+
+    private void selecionarLinha(MouseEvent evt) {
+        int linha = tabelaClientes.rowAtPoint(evt.getPoint());
+        if (linha > -1) {
+            tabelaClientes.setRowSelectionInterval(linha, linha);
+            linha = tabelaClientes.getSelectedRow();
+            this.cliente = clientes.get(linha);
         }
     }
-    private void realizarAcao(MouseEvent evt){
-        if (evt.getButton() == evt.BUTTON1){
-            
-            if(evt.getClickCount() > 1){
+
+    private void realizarAcao(MouseEvent evt) {
+        if (evt.getButton() == evt.BUTTON1) {
+
+            if (evt.getClickCount() > 1) {
                 verDetalhes();
             }
-        }else{
-            if(evt.getButton() == evt.BUTTON3){
-                popupOperacoes.show(evt.getComponent(), evt.getX(), evt.getY());
-            }
+        } else if (evt.getButton() == evt.BUTTON3) {
+            popupOperacoes.show(evt.getComponent(), evt.getX(), evt.getY());
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -290,6 +289,11 @@ public class EmpresaPesquisa extends javax.swing.JFrame {
         jMenu2.add(jMenuItemTelefone);
 
         jMenuItemEmpresa.setText("Empresa");
+        jMenuItemEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEmpresaActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItemEmpresa);
 
         jMenuBar1.add(jMenu2);
@@ -300,11 +304,11 @@ public class EmpresaPesquisa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaSairMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaSairMouseReleased
-       System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_botaSairMouseReleased
 
     private void camoPesquisaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_camoPesquisaKeyTyped
-       //ssss
+        //ssss
     }//GEN-LAST:event_camoPesquisaKeyTyped
 
     private void camoPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_camoPesquisaKeyReleased
@@ -312,9 +316,9 @@ public class EmpresaPesquisa extends javax.swing.JFrame {
     }//GEN-LAST:event_camoPesquisaKeyReleased
 
     private void camoPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_camoPesquisaKeyPressed
-       if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-           prencherTabela();
-       }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            prencherTabela();
+        }
     }//GEN-LAST:event_camoPesquisaKeyPressed
 
     private void botaoNovoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoNovoMouseReleased
@@ -323,7 +327,7 @@ public class EmpresaPesquisa extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoNovoMouseReleased
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-       prencherTabela();
+        prencherTabela();
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void tabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClientesMouseClicked
@@ -332,23 +336,28 @@ public class EmpresaPesquisa extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelaClientesMouseClicked
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-
+       
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jMenuItemFuncinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncinarioActionPerformed
-        Pesquisa pesfuncionario= new Pesquisa();
+        Pesquisa pesfuncionario = new Pesquisa();
         pesfuncionario.setVisible(true);
-    
+
     }//GEN-LAST:event_jMenuItemFuncinarioActionPerformed
 
     private void jMenuItemTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelefoneActionPerformed
-//      CadastroTelefone telefone = new CadastroTelefone();
-//      telefone.setVisible(true);
+      CadastroTelefone telefone = new CadastroTelefone();
+      telefone.setVisible(true);
     }//GEN-LAST:event_jMenuItemTelefoneActionPerformed
 
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
-       System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
+
+    private void jMenuItemEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmpresaActionPerformed
+         EmpresaCadastro empresa = new EmpresaCadastro();
+        empresa.setVisible(true);
+    }//GEN-LAST:event_jMenuItemEmpresaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -7,26 +7,19 @@ import util.BDMensagensPadrao;
 import model.dao.EmpresaDAO;
 
 public class EmpresaDetahes extends javax.swing.JFrame {
-    private Empresa cliente;
+    private Empresa empresa;
 
-    public EmpresaDetahes( Empresa cliente) {
+    public EmpresaDetahes( Empresa empresa) {
         initComponents();
-        this.cliente=cliente;
+        this.empresa=empresa;
         mortrarDados();
         setResizable(false);
         setLocationRelativeTo(this);
     }
-
-    @SuppressWarnings("unchecked")
     
     private void mortrarDados() {
-            
-            jLabelRazaoSosial.setText(this.cliente.getRazaosocial());
-         
+            jLabelRazaoSosial.setText(this.empresa.getRazaosocial());
     }
-    
-    
-    
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -149,7 +142,7 @@ public class EmpresaDetahes extends javax.swing.JFrame {
     public boolean excluir (){
         EmpresaDAO dao = new EmpresaController();
         try{
-            dao.remove(cliente);
+            dao.remove(empresa);
             return true;
         }catch(Exception ex){
             ex.printStackTrace();
@@ -158,7 +151,7 @@ public class EmpresaDetahes extends javax.swing.JFrame {
     }
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
        int mensagem = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir " +
-                       cliente.getRazaosocial()+ "?", null, JOptionPane.YES_NO_OPTION);
+                       empresa.getRazaosocial()+ "?", null, JOptionPane.YES_NO_OPTION);
         if(mensagem == JOptionPane.YES_OPTION){
             if (excluir())
                 JOptionPane.showMessageDialog(null,BDMensagensPadrao.EXCLUIDO_COM_SUCESSO);
@@ -166,11 +159,13 @@ public class EmpresaDetahes extends javax.swing.JFrame {
               new Exception(BDMensagensPadrao.INSTRUCAO_ERRO);
         }else {
             JOptionPane.showConfirmDialog(null,"Operação cencelada");
+                    
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-     EmpresaCadastro elterar = new EmpresaCadastro(this.cliente);
+         EmpresaCadastro alterar = new EmpresaCadastro(this.empresa);
+         alterar.setVisible(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
