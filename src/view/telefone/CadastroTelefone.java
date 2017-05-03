@@ -27,48 +27,53 @@ public class CadastroTelefone extends javax.swing.JFrame {
     TelefoneFuncionario telefonefum;
     TelefoneEmpresa telefoneemp;
 
-    public CadastroTelefone(TelefoneEmpresa telefoneemp) {
-        initComponents();
-        this.telefoneemp = telefoneemp;
-        setResizable(false);
-        setLocationRelativeTo(this);
-        this.opcaoTela = "Alterar";
-        btnSalavar1.setText(opcaoTela);
-        preencherCombobox();
-        mostrardados();
-    }
-
-    public CadastroTelefone(TelefoneFuncionario telefonefum) {
-        initComponents();
-        this.telefonefum = telefonefum;
-        setResizable(false);
-        setLocationRelativeTo(this);
-        this.opcaoTela = "Alterar";
-        btnSalavar1.setText(opcaoTela);
-        preencherCombobox();
-        mostrardados();
-    }
-
-    public CadastroTelefone() {
+    
+    
+     public CadastroTelefone() {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(this);
         this.opcaoTela = "Salvar";
         btnSalavar1.setText(opcaoTela);
-        setTitle(opcaoTela + " Funcionario");
+        setTitle(opcaoTela + " Telefone");
         preencherCombobox();
 
     }
+    public CadastroTelefone(TelefoneEmpresa telefoneemp) {
+        initComponents();
+        this.telefoneemp = telefoneemp;
+        setResizable(false);
+        setLocationRelativeTo(this);
+        this.opcaoTela = "Editar";
+        btnSalavar1.setText(opcaoTela);
+        jRadioButtonEmpresa.setSelected(true);
+        preencherCombobox();
+        mostrardados();
+    }
+    public CadastroTelefone(TelefoneFuncionario telefonefun) {
+        initComponents();
+        this.telefonefum = telefonefun;
+        setResizable(false);
+        setLocationRelativeTo(this);
+        this.opcaoTela = "Editar";
+        btnSalavar1.setText(opcaoTela);
+        preencherCombobox();
+        mostrardados();
+    }
+ 
+
+   
 
     private void mostrardados() {
         if (jRadioButtonEmpresa.isSelected()) {
             campoDescricao.setText(this.telefoneemp.getDescricao());
+            JOptionPane.showMessageDialog(null,this.telefoneemp.getNumero());
             campoNumero.setText(this.telefoneemp.getNumero());
-            comboEmpresa.setSelectedItem(this.telefoneemp.getEmpresa());
+            
         } else if (jRadioButtonFuncionario.isSelected()) {
             campoDescricao.setText(this.telefonefum.getDescricao());
             campoNumero.setText(this.telefonefum.getNumero());
-            comboFucionario.setSelectedItem(this.telefonefum.getFuncionario());
+            
         }
     }
 
@@ -108,8 +113,6 @@ public class CadastroTelefone extends javax.swing.JFrame {
 
     public void cadastrar() {
 
-        
-
         if (jRadioButtonEmpresa.isSelected()) {
             TelefoneEmpresaDAO dao = new TelefoneEmpresaController();
             TelefoneEmpresa telempresa = new TelefoneEmpresa();
@@ -128,6 +131,7 @@ public class CadastroTelefone extends javax.swing.JFrame {
             telFun.setFuncionario((Funcionario) comboFucionario.getSelectedItem());
             dao.save(telFun);
             JOptionPane.showMessageDialog(this, BDMensagensPadrao.CADASTRADO_COM_SUCESSO);
+
             liparCampos();
         }
 
@@ -169,13 +173,13 @@ public class CadastroTelefone extends javax.swing.JFrame {
         painelDados = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         campoDescricao = new javax.swing.JTextField();
-        campoNumero = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jRadioButtonFuncionario = new javax.swing.JRadioButton();
         jRadioButtonEmpresa = new javax.swing.JRadioButton();
         painelCombo = new javax.swing.JPanel();
         comboFucionario = new javax.swing.JComboBox<>();
         comboEmpresa = new javax.swing.JComboBox<>();
+        campoNumero = new javax.swing.JFormattedTextField();
         painelButoes = new javax.swing.JPanel();
         btnSalavar1 = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -204,8 +208,6 @@ public class CadastroTelefone extends javax.swing.JFrame {
         jLabel1.setText("Descrição");
 
         campoDescricao.setFont(new java.awt.Font("Dialog", 2, 14)); // NOI18N
-
-        campoNumero.setFont(new java.awt.Font("Dialog", 2, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Número");
@@ -248,22 +250,36 @@ public class CadastroTelefone extends javax.swing.JFrame {
                 .addComponent(comboEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        try {
+            campoNumero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        campoNumero.setText("");
+        campoNumero.setFont(new java.awt.Font("Dialog", 2, 14)); // NOI18N
+        campoNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoNumeroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelDadosLayout = new javax.swing.GroupLayout(painelDados);
         painelDados.setLayout(painelDadosLayout);
         painelDadosLayout.setHorizontalGroup(
             painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDadosLayout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(painelDadosLayout.createSequentialGroup()
-                        .addComponent(jRadioButtonFuncionario)
-                        .addGap(34, 34, 34)
-                        .addComponent(jRadioButtonEmpresa))
-                    .addComponent(jLabel1)
-                    .addComponent(campoDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addComponent(campoNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
-                    .addComponent(painelCombo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(painelDadosLayout.createSequentialGroup()
+                            .addComponent(jRadioButtonFuncionario)
+                            .addGap(34, 34, 34)
+                            .addComponent(jRadioButtonEmpresa))
+                        .addComponent(jLabel1)
+                        .addComponent(campoDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addComponent(painelCombo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         painelDadosLayout.setVerticalGroup(
@@ -347,9 +363,10 @@ public class CadastroTelefone extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalavar1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalavar1MouseReleased
-        if (opcaoTela.equals("Cadastrar")) {
+       
+        if (opcaoTela.equals("Salvar")) {
             cadastrar();
-        } else if (opcaoTela.equals("Cadastrar")) {
+        } else if (opcaoTela.equals("Editar")) {
             editar();
         }
     }//GEN-LAST:event_btnSalavar1MouseReleased
@@ -372,13 +389,17 @@ public class CadastroTelefone extends javax.swing.JFrame {
         comboFucionario.setEnabled(false);
     }//GEN-LAST:event_jRadioButtonEmpresaMouseClicked
 
+    private void campoNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNumeroActionPerformed
+
+    }//GEN-LAST:event_campoNumeroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalavar1;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField campoDescricao;
-    private javax.swing.JTextField campoNumero;
+    private javax.swing.JFormattedTextField campoNumero;
     private javax.swing.JComboBox<Object> comboEmpresa;
     private javax.swing.JComboBox<Object> comboFucionario;
     private javax.swing.JButton jButton1;

@@ -11,7 +11,8 @@ import javax.swing.JMenuItem;
 import model.Entitys.Empresa;
 import model.dao.EmpresaDAO;
 import view.funcionario.Pesquisa;
-import view.telefone.CadastroTelefone;
+
+import view.telefone.PesquisaTelefone;
 
 public class EmpresaPesquisa extends javax.swing.JFrame {
 
@@ -346,7 +347,7 @@ public class EmpresaPesquisa extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemFuncinarioActionPerformed
 
     private void jMenuItemTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTelefoneActionPerformed
-      CadastroTelefone telefone = new CadastroTelefone();
+        PesquisaTelefone telefone = new PesquisaTelefone();
       telefone.setVisible(true);
     }//GEN-LAST:event_jMenuItemTelefoneActionPerformed
 

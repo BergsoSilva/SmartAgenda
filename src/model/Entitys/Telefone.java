@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+
 
 
 /**
@@ -29,9 +31,10 @@ public abstract class Telefone implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descricao;
+    
+    //@Pattern(regexp = "^\\([1-9]{2}\\) [9][8-9]{1}[0-9]{3}\\-[0-9]{4}$",message = "O número INVÁLIDO")
     private String numero;
     
-  
     public Long getId() {
         return id;
     }
@@ -55,6 +58,13 @@ public abstract class Telefone implements Serializable {
     public void setNumero(String numero) {
         this.numero = numero;
     }
+
+    @Override
+    public String toString() {
+        return "Telefone{" + "descricao=" + descricao + ", numero=" + numero + '}';
+    }
+
+   
 
    
    

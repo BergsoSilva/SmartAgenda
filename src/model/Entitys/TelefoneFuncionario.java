@@ -27,11 +27,5 @@ public class TelefoneFuncionario extends Telefone{
         return funcionario;
     }
 
-    @Override
-    public String toString() {
-        return "TelefoneFuncionario{" + "funcionario=" + funcionario + '}';
-    }
-    
-   
-   
+  
 }

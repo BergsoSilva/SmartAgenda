@@ -1,11 +1,11 @@
 package view.funcionario;
 
-import view.empresa.*;
-import controller.EmpresaController;
 import controller.FuncionarioController;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
-import model.Entitys.Empresa;
 import model.Entitys.Funcionario;
+import model.Entitys.TelefoneFuncionario;
 import util.BDMensagensPadrao;
 import model.dao.FuncionarioDAO;
 
@@ -22,10 +22,18 @@ public class Detahes extends javax.swing.JFrame {
 
     
     private void mortrarDados() {
-            labelNome.setText(this.funcionario.getNome());
-            labelEmpresa.setText(this.funcionario.getEmpresa().getRazaosocial());
-            labelTelefones.setText(this.funcionario.getTelefones().toString());
-         
+       
+     List<String> telefones = new ArrayList<>();
+     
+        for (TelefoneFuncionario telefone : this.funcionario.getTelefones()) {
+            telefones.add(telefone.getNumero());
+        }
+        
+    labelNome.setText(this.funcionario.getNome());
+    labelEmpresa.setText(this.funcionario.getEmpresa().getRazaosocial());
+
+    labelTelefones.setText(telefones.toString());
+
     }
     
     
